@@ -1,0 +1,2 @@
+[console_scripts]
+rebabel-format = rebabel_format:main
