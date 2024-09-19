@@ -1,11 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
 const execFile = require("node:child_process").execFile;
+const { dialog } = require("electron");
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 800,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -16,26 +17,31 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow();
-  ipcMain.handle("activatePython", () => {
-    return new Promise((resolve, reject) => {
-      execFile(
-        "./term",
-        ['-msg="Does this cat?"'],
-        (error, stdout, stderror) => {
-          if (error) {
-            console.log(error);
-          }
-          resolve(stdout ? stdout : stderror);
-        }
-      );
+  ipcMain.handle("getFile", () => {
+    return dialog.showOpenDialog({
+      properties: ["openFile"],
     });
+
+    //instead of anony create a seperate async??
+    // return new Promise((resolve, reject) => {
+    //   execFile(
+    //     "./term",
+    //     ['-msg="Does this cat?"'],
+    //     (error, stdout, stderror) => {
+    //       if (error) {
+    //         console.log(error);
+    //       }
+    //       resolve(stdout ? stdout : stderror);
+    //     }
+    //   );
+    // });
   });
 
   ipcMain.handle("testText", (event, value) => {
     return new Promise((resolve, reject) => {
       execFile(
-        "./resources/term",
-        [`-msg=${value}`],
+        "./main",
+        ["import", "config.toml"],
         (error, stdout, stderror) => {
           if (error) {
             console.log(error);

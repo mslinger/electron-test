@@ -1,0 +1,17 @@
+#file-in {
+  width: 50%;
+}
+
+#file-in-type {
+  width: 20%;
+}
+
+#file-out-type {
+  width: 20%;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: red;
+  opacity: 1 !important;
+}

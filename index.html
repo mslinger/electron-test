@@ -1,20 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self' data:; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self' data:; script-src 'self'"
     />
-    <title>Hello from Electron renderer!</title>
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="pico.blue.min.css" />
+    <link rel="stylesheet" href="custom.css" />
+    <title>Gap App</title>
   </head>
   <body>
-    <h1>Hello from Electron renderer!</h1>
+    <main class="container base-flex">
+      <header><h1>Gap App</h1></div></header>
+      <section>Here is a brief explanation of what to do? You can import yada yada yada, you can export yada yada yada</section>
+      <section>
+        <div>
+          <h4>Import Data</h4>
+          <hr>
+        </div>
+      <div>
+        <input id="file-in" readonly placeholder="Select File...">
+        <button id="test-file">Select File</button>
+      </div>
+      <div>
+        <span>Select File Input Type:</span>
+        <select id="file-in-type" aria-label="Select File Type">
+          <option selected value=""></option>
+          <option value="flextext">Flextext</option>
+          <option value="flextext">Cheese</option>
+          <option value="flextext">Dog</option>
+        </select>
+        <div>
+          Maybe dbstuff here or not??
+        </div>
+
+      <div>
+        <button id="test-python">Import</button>
+      </div>
+      </div>
+      <div>
+        <span id="python-text"></span>
+      </div>
+      </section>
+      <section>
+        <div>
+          <h4>Export Data</h4>
+          <hr>
+        </div>      
+      <div>
+        <span>Select File Output Type:</span>
+        <select id="file-out-type">
+          <option selected value=""></option>
+          <option value="flextext">Flextext</option>
+          <option value="flextext">Cheese</option>
+          <option value="flextext">Dog</option>
+        </select>
+        <div>
+        <button>Export</button>
+      </div>
+      </div>
+      </section>
+    </main>
+
+    <!-- <h1>Hello from Electron renderer!</h1>
     <p>👋</p>
     <input type="text" id="text-input" />
     <button id="test">Execute Python Test!</button>
@@ -24,7 +79,7 @@
     </div>
     <div>
       <span id="text"></span>
-    </div>
+    </div> -->
   </body>
   <script src="./renderer.js"></script>
 </html>
