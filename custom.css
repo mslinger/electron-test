@@ -9,9 +9,3 @@
 #file-out-type {
   width: 20%;
 }
-
-::-webkit-input-placeholder {
-  /* WebKit browsers */
-  color: red;
-  opacity: 1 !important;
-}
